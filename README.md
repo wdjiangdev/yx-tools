@@ -1,10 +1,11 @@
 
-基于原版v2.2.3版本基于自己需求进行了修改：
+基于自己需求在作者原v2.2.6版本上进行了修改：
 
 实现功能：
 CF及CFT的IPv4&IPv6优选，CF上传gist, CFT上传CF DNS
 
 
+以下为作者原版本：
 
 # Cloudflare SpeedTest 跨平台自动化工具
 
