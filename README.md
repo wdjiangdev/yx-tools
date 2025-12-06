@@ -1,3 +1,11 @@
+
+基于原版v2.2.3版本基于自己需求进行了修改：
+
+实现功能：
+CF及CFT的IPv4&IPv6优选，CF上传gist, CFT上传CF DNS
+
+
+
 # Cloudflare SpeedTest 跨平台自动化工具
 
 [![Version](https://img.shields.io/badge/Version-2.2.3-blue.svg)](https://github.com/byJoey/yx-tools)
