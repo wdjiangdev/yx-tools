@@ -3771,9 +3771,21 @@ def upload_to_github(result_file="result.csv", name_tag=""):
             # 2. 设置后缀：如果是 IPv6 用 "V6"，否则用 "V4"
             version_suffix = "V6" if is_ipv6 else "V4"
             
-            # 3. 构建名称：地区 + 版本后缀 + 横杠 + name_tag
-            # 效果: 新加坡V4-242-01
-            name = f"{region_name}{version_suffix}{name_tag}-{i:02d}"
+            # --- ✅ 新增：按指定顺序添加前缀 ---
+            sort_prefix = ""
+            if not is_ipv6 and not name_tag:
+                sort_prefix = "A-"  # 1. AS13335 IPv4
+            elif is_ipv6 and not name_tag:
+                sort_prefix = "B-"  # 2. AS13335 IPv6
+            elif not is_ipv6 and "-242" in name_tag:
+                sort_prefix = "C-"  # 3. AS209242 IPv4
+            elif is_ipv6 and "-242" in name_tag:
+                sort_prefix = "D-"  # 4. AS209242 IPv6
+            elif "-CFT" in name_tag:
+                sort_prefix = "E-"  # (可选) CloudFront 排在最后
+            
+            # 3. 构建名称
+            name = f"{sort_prefix}{region_name}{version_suffix}{name_tag}-{i:02d}"
             
             # 4. 格式化输出 (IPv6 地址需要加中括号 [])
             if is_ipv6:
@@ -4333,9 +4345,21 @@ def upload_to_github_cli(result_file="result.csv", repo_info=None, github_token=
             # 2. 设置后缀：如果是 IPv6 用 "V6"，否则用 "V4"
             version_suffix = "V6" if is_ipv6 else "V4"
             
-            # 3. 构建名称：地区 + 版本后缀 + 横杠 + name_tag (关键修改点)
-            # 效果: 地区 + 版本 + 标签(如 -242) + 序号
-            name = f"{region_name}{version_suffix}{name_tag}-{i:02d}"
+            # --- ✅ 新增：按指定顺序添加前缀 ---
+            sort_prefix = ""
+            if not is_ipv6 and not name_tag:
+                sort_prefix = "A-"  # 1. AS13335 IPv4
+            elif is_ipv6 and not name_tag:
+                sort_prefix = "B-"  # 2. AS13335 IPv6
+            elif not is_ipv6 and "-242" in name_tag:
+                sort_prefix = "C-"  # 3. AS209242 IPv4
+            elif is_ipv6 and "-242" in name_tag:
+                sort_prefix = "D-"  # 4. AS209242 IPv6
+            elif "-CFT" in name_tag:
+                sort_prefix = "E-"  # (可选) CloudFront 排在最后
+            
+            # 3. 构建名称
+            name = f"{sort_prefix}{region_name}{version_suffix}{name_tag}-{i:02d}"
             
             # 4. 格式化输出 (IPv6 地址需要加中括号 [])
             if is_ipv6:
