@@ -1767,7 +1767,7 @@ def run_with_args(args):
             target_ip_file = "cft_ipv6.txt" if args.ipv6 else "cft_ipv4.txt"
             if not os.path.exists(target_ip_file):
                 print(f"文件 {target_ip_file} 不存在，尝试自动下载...")
-                dl_url = "https://raw.githubusercontent.com/astemo6/yx-tools/main/CFT/ipv6.txt" if args.ipv6 else "https://raw.githubusercontent.com/astemo6/yx-tools/main/CFT/ipv4.txt"
+                dl_url = "https://raw.githubusercontent.com/wdjiangdev/yx-tools/main/CFT/ipv6.txt" if args.ipv6 else "https://raw.githubusercontent.com/wdjiangdev/yx-tools/main/CFT/ipv4.txt"
                 download_file(dl_url, target_ip_file)
         
         if not os.path.exists(target_ip_file):
@@ -2199,8 +2199,8 @@ def handle_cft_beginner_mode(exec_name):
     print("  2. IPv6")
     ip_choice = input("请输入 [1/2]: ").strip()
     
-    CFT_IPV4_URL = "https://raw.githubusercontent.com/astemo6/yx-tools/refs/heads/main/CFT/ipv4.txt"
-    CFT_IPV6_URL = "https://raw.githubusercontent.com/astemo6/yx-tools/refs/heads/main/CFT/ipv6.txt"
+    CFT_IPV4_URL = "https://raw.githubusercontent.com/wdjiangdev/yx-tools/refs/heads/main/CFT/ipv4.txt"
+    CFT_IPV6_URL = "https://raw.githubusercontent.com/wdjiangdev/yx-tools/refs/heads/main/CFT/ipv6.txt"
     
     if ip_choice == "2":
         target_url = CFT_IPV6_URL
@@ -2327,9 +2327,9 @@ def handle_cft_normal_mode(exec_name):
         print(f"⚠️  文件 {ip_file} 不存在，尝试自动下载默认列表...")
         # 尝试下载兜底
         if "ipv6" in default_file:
-            download_file("https://raw.githubusercontent.com/astemo6/yx-tools/refs/heads/main/CFT/ipv6.txt", ip_file)
+            download_file("https://raw.githubusercontent.com/wdjiangdev/yx-tools/refs/heads/main/CFT/ipv6.txt", ip_file)
         else:
-            download_file("https://raw.githubusercontent.com/astemo6/yx-tools/refs/heads/main/CFT/ipv4.txt", ip_file)
+            download_file("https://raw.githubusercontent.com/wdjiangdev/yx-tools/refs/heads/main/CFT/ipv4.txt", ip_file)
             
         if not os.path.exists(ip_file):
              print("❌ 无法找到有效的 IP 文件")
